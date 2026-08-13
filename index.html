@@ -352,6 +352,74 @@
   }
   .quote .who { color: var(--grey); font-size: 14px; }
 
+  /* Contact info */
+  .contact-info {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 14px;
+    color: var(--grey);
+  }
+  .contact-info strong { color: var(--black); }
+
+  /* Intake form */
+  .intake-form {
+    max-width: 680px;
+    margin: 64px auto 0;
+    background: var(--light-grey);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 44px;
+  }
+  .intake-form .section-head { margin-bottom: 32px; }
+  .intake-form .section-head h2 { font-size: 26px; }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 11px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--black);
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .form-field textarea { resize: vertical; min-height: 80px; }
+  .form-field input[type="file"] { padding: 8px; font-size: 13px; }
+  .intake-form .submit-btn {
+    margin-top: 24px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  @media (max-width: 640px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .intake-form { padding: 28px; }
+  }
+
   /* CTA band */
   .cta-band {
     background: var(--black);
@@ -539,6 +607,57 @@
       <h2>Ready to let Clara answer?</h2>
       <p>Free 14-day trial. No contract, cancel anytime.</p>
       <a class="btn btn-primary" href="mailto:alexplayzyt1122@gmail.com">Get started</a>
+    </div>
+
+    <p class="contact-info">Questions? Reach <strong>Alex Alessio</strong> directly at <strong>0490 045 557</strong></p>
+
+    <div class="intake-form">
+      <div class="section-head">
+        <h2>Tell us about your business</h2>
+        <p>Fill this out and we'll put together a custom setup for Clara.</p>
+      </div>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="clientName">Client name</label>
+            <input type="text" id="clientName" name="Client Name" required>
+          </div>
+          <div class="form-field">
+            <label for="business">Business</label>
+            <input type="text" id="business" name="Business" required>
+          </div>
+          <div class="form-field">
+            <label for="lineOfWork">Line of work</label>
+            <input type="text" id="lineOfWork" name="Line of Work" placeholder="e.g. Restaurant, Salon, Clinic">
+          </div>
+          <div class="form-field">
+            <label for="software">Software used</label>
+            <input type="text" id="software" name="Software Used" placeholder="e.g. Square, OpenTable">
+          </div>
+          <div class="form-field full">
+            <label for="package">Package chosen</label>
+            <select id="package" name="Package">
+              <option value="">Select a package</option>
+              <option value="Takeaway">Takeaway — $450/mo</option>
+              <option value="Bookings">Bookings — $450/mo</option>
+              <option value="Hybrid">Hybrid — $750/mo</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="description">Small description</label>
+            <textarea id="description" name="Description" placeholder="Briefly describe your business and what you need Clara for"></textarea>
+          </div>
+          <div class="form-field full">
+            <label for="questions">Questions</label>
+            <textarea id="questions" name="Questions" placeholder="Anything you'd like to ask us"></textarea>
+          </div>
+          <div class="form-field full">
+            <label for="upload">Upload information (menu, documents, etc.)</label>
+            <input type="file" id="upload" name="Attachment">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+      </form>
     </div>
   </div>
 </section>
