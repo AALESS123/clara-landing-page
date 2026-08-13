@@ -11,6 +11,9 @@
     --light-grey: #f4f4f2;
     --line: #e5e5e0;
     --accent: #2b6b4f;
+    --accent-coral: #d9764f;
+    --accent-blue: #4c7ea3;
+    --accent-gold: #b5892f;
     --white: #ffffff;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,6 +30,13 @@
     max-width: 1040px;
     margin: 0 auto;
     padding: 0 32px;
+  }
+
+  /* Top accent stripe */
+  .accent-stripe {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-blue), var(--accent-coral), var(--accent-gold));
   }
 
   /* Nav */
@@ -73,7 +83,26 @@
   .hero {
     padding: 120px 0 100px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    background:
+      radial-gradient(circle at 25% 40%, rgba(43,107,79,0.16), transparent 60%),
+      radial-gradient(circle at 75% 35%, rgba(76,126,163,0.14), transparent 60%),
+      radial-gradient(circle at 50% 70%, rgba(217,118,79,0.12), transparent 60%);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
   .eyebrow {
     font-size: 13px;
     letter-spacing: 0.08em;
@@ -163,6 +192,11 @@
     margin-bottom: 20px;
     font-size: 18px;
   }
+  .card .icon.c1 { background: rgba(43, 107, 79, 0.12); }
+  .card .icon.c2 { background: rgba(76, 126, 163, 0.12); }
+  .card .icon.c3 { background: rgba(217, 118, 79, 0.14); }
+  .card .icon.c4 { background: rgba(181, 137, 47, 0.14); }
+  .card:hover { background: var(--white); transition: background 0.2s; }
   .card h3 {
     font-size: 17px;
     margin-bottom: 8px;
@@ -205,6 +239,10 @@
     margin: 0 auto 14px;
     font-size: 18px;
   }
+  .flow-icon.c1 { background: rgba(43, 107, 79, 0.12); }
+  .flow-icon.c2 { background: rgba(76, 126, 163, 0.12); }
+  .flow-icon.c3 { background: rgba(217, 118, 79, 0.14); }
+  .flow-icon.c4 { background: rgba(181, 137, 47, 0.14); }
   .flow-step h3 { font-size: 15px; margin-bottom: 6px; letter-spacing: -0.01em; }
   .flow-step p { font-size: 13px; color: var(--grey); }
   .flow-arrow {
@@ -254,15 +292,15 @@
     flex-direction: column;
   }
   .plan.featured {
-    border-color: var(--black);
-    box-shadow: 0 0 0 1px var(--black);
+    border-color: var(--accent-coral);
+    box-shadow: 0 0 0 1px var(--accent-coral);
   }
   .plan-badge {
     position: absolute;
     top: -13px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--black);
+    background: var(--accent-coral);
     color: var(--white);
     font-size: 11px;
     font-weight: 700;
@@ -292,6 +330,8 @@
     font-weight: 700;
   }
   .plan .btn { text-align: center; width: 100%; }
+  .plan.featured .btn-primary { background: var(--accent-coral); }
+  .plan.featured .btn-primary:hover { background: var(--black); }
 
   @media (max-width: 820px) {
     .pricing-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
@@ -344,6 +384,8 @@
 </head>
 <body>
 
+<div class="accent-stripe"></div>
+
 <header>
   <nav class="wrap">
     <div class="logo">clara<span>.</span></div>
@@ -377,22 +419,22 @@
     </div>
     <div class="grid">
       <div class="card">
-        <div class="icon">📅</div>
+        <div class="icon c1">📅</div>
         <h3>Bookings</h3>
         <p>Clara checks availability and schedules appointments directly into your calendar, no back-and-forth.</p>
       </div>
       <div class="card">
-        <div class="icon">📞</div>
+        <div class="icon c2">📞</div>
         <h3>Calls</h3>
         <p>Every incoming call is answered instantly, day or night, with a natural conversational voice.</p>
       </div>
       <div class="card">
-        <div class="icon">🥡</div>
+        <div class="icon c3">🥡</div>
         <h3>Takeaway orders</h3>
         <p>Customers order by phone, Clara takes it down accurately and sends it straight to your kitchen.</p>
       </div>
       <div class="card">
-        <div class="icon">🗒️</div>
+        <div class="icon c4">🗒️</div>
         <h3>Call logs</h3>
         <p>Every call is transcribed and logged, so you always know who called, why, and what was agreed.</p>
       </div>
@@ -408,25 +450,25 @@
     </div>
     <div class="flow">
       <div class="flow-step">
-        <div class="flow-icon">📞</div>
+        <div class="flow-icon c1">📞</div>
         <h3>Call is made</h3>
         <p>A customer calls your business line.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
-        <div class="flow-icon">🧠</div>
+        <div class="flow-icon c2">🧠</div>
         <h3>Call is processed</h3>
         <p>Clara understands the request — a booking, an order, or a question.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
-        <div class="flow-icon">🔗</div>
+        <div class="flow-icon c3">🔗</div>
         <h3>Exports to your software</h3>
         <p>Sent straight to Square, OpenTable, or your POS — no manual entry.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
-        <div class="flow-icon">📊</div>
+        <div class="flow-icon c4">📊</div>
         <h3>Logged to Google Sheets</h3>
         <p>Managers see every call and outcome the moment it happens.</p>
       </div>
